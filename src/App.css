@@ -1,38 +1,210 @@
-.App {
-  text-align: center;
-}
+/* Estilos básicos */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.invite-bg {
   min-height: 100vh;
+  width: 100vw;
+  background-image: url('/public/fundo.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  font-family: Arial, sans-serif;
+  margin-top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  min-height: 100vh;
 }
 
-.App-link {
-  color: #61dafb;
+.logo-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.invite-logo {
+  max-width: 220px;
+  height: auto;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.invite-header {
+  text-align: center;
+  background: rgba(255,255,255,0.6);
+  border-radius: 24px;
+  padding: 32px 16px 16px 16px;
+  box-shadow: 0 4px 16px rgba(116,132,96,0.15);
+  margin-bottom: 18px;
+}
+
+.lion-emoji {
+  font-size: 60px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.invite-title {
+  font-family: 'Pacifico', cursive;
+  color: #748460;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+.invite-banner {
+  font-size: 1.2rem;
+  color: #8f7055;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.invite-address {
+  font-size: 1rem;
+  color: #748460;
+  margin-bottom: 10px;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.form-style {
+  background-color: rgba(255,255,255,0.6);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(116,132,96,0.10);
+  min-width: 320px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza os itens do formulário */
+}
+
+.form-style .form-group {
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza label e input */
+}
+
+.form-style label {
+  display: block;
+  margin-bottom: 14px; /* Espaço maior entre label e input */
+  font-weight: 500;
+  color: #748460;
+  text-align: center; /* Centraliza o texto do label */
+  width: 100%;
+}
+
+.form-style input[type="text"] {
+  margin-bottom: 14px;
+  border: 2px solid #748460;
+  border-radius: 8px;
+  text-align: center; /* Centraliza o texto digitado */
+  width: 100%;
+  max-width: 300px;
+}
+
+button {
+  background-color: #4CAF50;
+  border: none;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.rounded-btn {
+  background-color: #748460;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 30px;
+  font-size: 1.1rem;
+  margin-top: 10px;
+  color: #fff;
+}
+
+.rounded-btn:hover {
+  background-color: #8f7055;
+}
+
+.admin-link {
+  font-weight: bold;
+  color: #8f7055 !important;
+}
+
+.modal-content {
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 350px;
+  min-height: 180px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  background: rgba(255,255,255,0.97);
+  z-index: 9999;
+}
+
+.modal-backdrop.show {
+  opacity: 0.5;
+  z-index: 9998;
+}
+
+.modal-body,
+.modal-footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.rounded-btn,
+.modal-footer .btn,
+.modal-body .btn {
+  background-color: #748460;
+  border: none;
+  border-radius: 25px;
+  padding: 14px 40px;
+  font-size: 1.2rem;
+  margin-top: 10px;
+  color: #fff;
+}
+
+.rounded-btn:hover,
+.modal-footer .btn:hover,
+.modal-body .btn:hover {
+  background-color: #8f7055;
+}
+
+.admin-bg {
+  background: rgba(255,255,255,0.6);
+  border-radius: 24px;
+  padding: 32px 16px 16px 16px;
+  box-shadow: 0 4px 16px rgba(116,132,96,0.15);
+  margin-bottom: 18px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.d-flex.justify-content-center {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
 }
