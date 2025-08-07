@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Form, Modal, Container, Row, Col } from 'react-bootstrap';
-import { createClient } from '@supabase/supabase-js';
 import AdminPage from './AdminPage';
 import './App.css';
-
-const supabaseUrl = 'https://fsffbyrppeckuopvltjs.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZzZmZieXJwcGVja3VvcHZsdGpzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ0MDMzOTcsImV4cCI6MjA2OTk3OTM5N30.Bw0TKaOFfC_osOY0Fq8HPuXBrFzaYkfPbJx9I9pC9NM';
-const supabase = createClient(supabaseUrl, supabaseKey);
 
 const conviteBg = '/fundo.png';
 const conviteLogo = '/logo.png';
@@ -21,6 +16,7 @@ const App = () => {
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
 
+  // Função que será chamada no envio do formulário
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -30,14 +26,25 @@ const App = () => {
       return;
     }
 
-    const { error } = await supabase
-      .from('confirmados')
-      .insert([{ nome, rg }]);
+    try {
+      // Enviando dados para a API no Vercel
+      const response = await fetch('/api/confirmados', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ nome, rg }),
+      });
 
-    if (error) {
-      setMessage('Erro ao confirmar presença.');
-    } else {
-      setMessage('Presença confirmada com sucesso! Aguardamos você no chá de bebê!');
+      const data = await response.json();
+
+      if (data.error) {
+        setMessage('Erro ao confirmar presença.');
+      } else {
+        setMessage('Presença confirmada com sucesso! Aguardamos você no chá de bebê!');
+      }
+    } catch (error) {
+      setMessage('Erro ao conectar com o servidor.');
     }
     setShowModal(true);
     setNome('');
@@ -76,7 +83,7 @@ const App = () => {
           width: '100vw',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center'
+          justifyContent: 'center',
         }}
       >
         <Container>
@@ -111,7 +118,7 @@ const App = () => {
         width: '100vw',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
       }}
     >
       <Container>
@@ -193,7 +200,7 @@ const App = () => {
               <Form.Control
                 type="password"
                 value={password}
-                onChange={e => setPassword(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
                 autoFocus
                 placeholder="Digite a senha"
               />
